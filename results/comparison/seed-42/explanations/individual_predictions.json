@@ -1,0 +1,862 @@
+[
+  {
+    "source_row_id": 16866,
+    "source_excel_row": 16869,
+    "observed_default_next_month": 0,
+    "uncalibrated_probability": 0.35063075721089226,
+    "calibrated_probability": 0.15652606021474968,
+    "base_log_odds": -0.4263985895659894,
+    "reconstructed_log_odds": -0.6162678000469142,
+    "contributions": [
+      {
+        "feature": "PAY_0",
+        "description": "Most recent repayment-status code",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.3156946102620923,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT2",
+        "description": "Payment amount, month 2 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.1832161394818882,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT1",
+        "description": "Payment amount, month 1 (NT dollars)",
+        "observed_value": 256.0,
+        "shap_log_odds": 0.18266570320237693,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT1",
+        "description": "Bill amount, month 1 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.1812685090800621,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_6",
+        "description": "Repayment-status code, month 6",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.16975793936715844,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT3",
+        "description": "Bill amount, month 3 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.12630141781086465,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_4",
+        "description": "Repayment-status code, month 4",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.08868100930102622,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_3",
+        "description": "Repayment-status code, month 3",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.07474969505794277,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_2",
+        "description": "Repayment-status code, month 2",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.07381365394584233,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT3",
+        "description": "Payment amount, month 3 (NT dollars)",
+        "observed_value": 425.0,
+        "shap_log_odds": 0.07303216425401537,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT6",
+        "description": "Payment amount, month 6 (NT dollars)",
+        "observed_value": 590.0,
+        "shap_log_odds": -0.06222152066904139,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "LIMIT_BAL",
+        "description": "Credit limit (NT dollars)",
+        "observed_value": 360000.0,
+        "shap_log_odds": -0.05752307556519672,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT6",
+        "description": "Bill amount, month 6 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.055024297617144564,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT5",
+        "description": "Payment amount, month 5 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.052023970141544945,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "AGE",
+        "description": "Age",
+        "observed_value": 40.0,
+        "shap_log_odds": 0.047659760258720985,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "SEX",
+        "description": "Recorded sex code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.04716668009826778,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "MARRIAGE",
+        "description": "Marital-status code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.046725493112878214,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT2",
+        "description": "Bill amount, month 2 (NT dollars)",
+        "observed_value": 256.0,
+        "shap_log_odds": 0.04099337681710117,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "EDUCATION",
+        "description": "Education code",
+        "observed_value": 2.0,
+        "shap_log_odds": 0.04037002017865279,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_5",
+        "description": "Repayment-status code, month 5",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.03326558575000386,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT4",
+        "description": "Bill amount, month 4 (NT dollars)",
+        "observed_value": 425.0,
+        "shap_log_odds": -0.019726036991853768,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT4",
+        "description": "Payment amount, month 4 (NT dollars)",
+        "observed_value": 1529.0,
+        "shap_log_odds": -0.01066812843627797,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT5",
+        "description": "Bill amount, month 5 (NT dollars)",
+        "observed_value": 1529.0,
+        "shap_log_odds": 0.002435943668011661,
+        "direction": "raises model risk score"
+      }
+    ]
+  },
+  {
+    "source_row_id": 26727,
+    "source_excel_row": 26730,
+    "observed_default_next_month": 0,
+    "uncalibrated_probability": 0.19390821073090014,
+    "calibrated_probability": 0.08198216213551972,
+    "base_log_odds": -0.4263985895659894,
+    "reconstructed_log_odds": -1.424812711955735,
+    "contributions": [
+      {
+        "feature": "PAY_0",
+        "description": "Most recent repayment-status code",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.4148448428603898,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "LIMIT_BAL",
+        "description": "Credit limit (NT dollars)",
+        "observed_value": 160000.0,
+        "shap_log_odds": -0.14117230807436817,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT5",
+        "description": "Bill amount, month 5 (NT dollars)",
+        "observed_value": 71321.0,
+        "shap_log_odds": -0.10365161512269395,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT1",
+        "description": "Bill amount, month 1 (NT dollars)",
+        "observed_value": 77838.0,
+        "shap_log_odds": -0.08211198874600091,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "SEX",
+        "description": "Recorded sex code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.07141976075010274,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT2",
+        "description": "Bill amount, month 2 (NT dollars)",
+        "observed_value": 76054.0,
+        "shap_log_odds": -0.06870478320975237,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "MARRIAGE",
+        "description": "Marital-status code",
+        "observed_value": 2.0,
+        "shap_log_odds": -0.06540434394521555,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_2",
+        "description": "Repayment-status code, month 2",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.05209609419695774,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "EDUCATION",
+        "description": "Education code",
+        "observed_value": 2.0,
+        "shap_log_odds": 0.044817236969888076,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT4",
+        "description": "Payment amount, month 4 (NT dollars)",
+        "observed_value": 3000.0,
+        "shap_log_odds": -0.039402613971786085,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_5",
+        "description": "Repayment-status code, month 5",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.03342097753924511,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT6",
+        "description": "Bill amount, month 6 (NT dollars)",
+        "observed_value": 141494.0,
+        "shap_log_odds": -0.03208731627079954,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT6",
+        "description": "Payment amount, month 6 (NT dollars)",
+        "observed_value": 3500.0,
+        "shap_log_odds": -0.03115701011158618,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_4",
+        "description": "Repayment-status code, month 4",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.027242896821556666,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_3",
+        "description": "Repayment-status code, month 3",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.023484816178171917,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "AGE",
+        "description": "Age",
+        "observed_value": 24.0,
+        "shap_log_odds": 0.022831313740572397,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT3",
+        "description": "Bill amount, month 3 (NT dollars)",
+        "observed_value": 73992.0,
+        "shap_log_odds": 0.0209689370100358,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT1",
+        "description": "Payment amount, month 1 (NT dollars)",
+        "observed_value": 3300.0,
+        "shap_log_odds": -0.019946308757499507,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_6",
+        "description": "Repayment-status code, month 6",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.017454318178882558,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT4",
+        "description": "Bill amount, month 4 (NT dollars)",
+        "observed_value": 73246.0,
+        "shap_log_odds": -0.013639034458264804,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT3",
+        "description": "Payment amount, month 3 (NT dollars)",
+        "observed_value": 3000.0,
+        "shap_log_odds": 0.012761747454889286,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT5",
+        "description": "Payment amount, month 5 (NT dollars)",
+        "observed_value": 3000.0,
+        "shap_log_odds": -0.01149229951284697,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT2",
+        "description": "Payment amount, month 2 (NT dollars)",
+        "observed_value": 3275.0,
+        "shap_log_odds": 0.006100449640783821,
+        "direction": "raises model risk score"
+      }
+    ]
+  },
+  {
+    "source_row_id": 22272,
+    "source_excel_row": 22275,
+    "observed_default_next_month": 0,
+    "uncalibrated_probability": 0.1750565564840649,
+    "calibrated_probability": 0.07384006344907065,
+    "base_log_odds": -0.4263985895659894,
+    "reconstructed_log_odds": -1.550205729049699,
+    "contributions": [
+      {
+        "feature": "PAY_0",
+        "description": "Most recent repayment-status code",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.43788645891974054,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT1",
+        "description": "Bill amount, month 1 (NT dollars)",
+        "observed_value": 54972.0,
+        "shap_log_odds": -0.22641556071315902,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "LIMIT_BAL",
+        "description": "Credit limit (NT dollars)",
+        "observed_value": 180000.0,
+        "shap_log_odds": -0.21160639441264548,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT1",
+        "description": "Payment amount, month 1 (NT dollars)",
+        "observed_value": 2000.0,
+        "shap_log_odds": 0.06193348522122002,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT2",
+        "description": "Bill amount, month 2 (NT dollars)",
+        "observed_value": 42329.0,
+        "shap_log_odds": -0.05744458628033201,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_2",
+        "description": "Repayment-status code, month 2",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.05598930787565996,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT3",
+        "description": "Payment amount, month 3 (NT dollars)",
+        "observed_value": 2000.0,
+        "shap_log_odds": -0.044064093681839604,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "MARRIAGE",
+        "description": "Marital-status code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.04145556007319643,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT2",
+        "description": "Payment amount, month 2 (NT dollars)",
+        "observed_value": 2002.0,
+        "shap_log_odds": -0.04076674235684328,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT3",
+        "description": "Bill amount, month 3 (NT dollars)",
+        "observed_value": 42071.0,
+        "shap_log_odds": 0.038616936364487014,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "SEX",
+        "description": "Recorded sex code",
+        "observed_value": 2.0,
+        "shap_log_odds": -0.03852706473138304,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "EDUCATION",
+        "description": "Education code",
+        "observed_value": 2.0,
+        "shap_log_odds": 0.03381364476183464,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_4",
+        "description": "Repayment-status code, month 4",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.033410440043058126,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_5",
+        "description": "Repayment-status code, month 5",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.03281515565556556,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "AGE",
+        "description": "Age",
+        "observed_value": 28.0,
+        "shap_log_odds": -0.028751811871035936,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT6",
+        "description": "Bill amount, month 6 (NT dollars)",
+        "observed_value": 40731.0,
+        "shap_log_odds": 0.02621662841898322,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_3",
+        "description": "Repayment-status code, month 3",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.025728161248876346,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT5",
+        "description": "Bill amount, month 5 (NT dollars)",
+        "observed_value": 39221.0,
+        "shap_log_odds": -0.024025334603447968,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_6",
+        "description": "Repayment-status code, month 6",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.023388468632375804,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT6",
+        "description": "Payment amount, month 6 (NT dollars)",
+        "observed_value": 2000.0,
+        "shap_log_odds": -0.020396126191833366,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT5",
+        "description": "Payment amount, month 5 (NT dollars)",
+        "observed_value": 2000.0,
+        "shap_log_odds": -0.011809951300771716,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT4",
+        "description": "Payment amount, month 4 (NT dollars)",
+        "observed_value": 2000.0,
+        "shap_log_odds": -0.010631710693424631,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT4",
+        "description": "Bill amount, month 4 (NT dollars)",
+        "observed_value": 39649.0,
+        "shap_log_odds": -0.002186025111439058,
+        "direction": "lowers model risk score"
+      }
+    ]
+  },
+  {
+    "source_row_id": 14422,
+    "source_excel_row": 14425,
+    "observed_default_next_month": 0,
+    "uncalibrated_probability": 0.3179700295949917,
+    "calibrated_probability": 0.1397767308625113,
+    "base_log_odds": -0.4263985895659894,
+    "reconstructed_log_odds": -0.7631164699712312,
+    "contributions": [
+      {
+        "feature": "PAY_0",
+        "description": "Most recent repayment-status code",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.3360001786527501,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT1",
+        "description": "Bill amount, month 1 (NT dollars)",
+        "observed_value": 41000.0,
+        "shap_log_odds": -0.3216295712246533,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "LIMIT_BAL",
+        "description": "Credit limit (NT dollars)",
+        "observed_value": 300000.0,
+        "shap_log_odds": -0.24945974200079377,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT3",
+        "description": "Payment amount, month 3 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.2355645729329898,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT2",
+        "description": "Payment amount, month 2 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.22300126806257548,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT4",
+        "description": "Payment amount, month 4 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.17773694316384234,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT3",
+        "description": "Bill amount, month 3 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.12743853672996386,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT1",
+        "description": "Payment amount, month 1 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.12361749897479671,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT4",
+        "description": "Bill amount, month 4 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.07692767928130131,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_4",
+        "description": "Repayment-status code, month 4",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.07502956794967244,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_6",
+        "description": "Repayment-status code, month 6",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.06761145620442525,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "AGE",
+        "description": "Age",
+        "observed_value": 37.0,
+        "shap_log_odds": 0.06269238998550183,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_3",
+        "description": "Repayment-status code, month 3",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.05143834062378544,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT6",
+        "description": "Payment amount, month 6 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.051114568906707104,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "MARRIAGE",
+        "description": "Marital-status code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.049844953385801,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_2",
+        "description": "Repayment-status code, month 2",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.04748160147350704,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT5",
+        "description": "Bill amount, month 5 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.04366392203163183,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT5",
+        "description": "Payment amount, month 5 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.041115496613435686,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT6",
+        "description": "Bill amount, month 6 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.03457846255970132,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT2",
+        "description": "Bill amount, month 2 (NT dollars)",
+        "observed_value": 0.0,
+        "shap_log_odds": 0.03341861665116564,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "SEX",
+        "description": "Recorded sex code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.030276434128964254,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_5",
+        "description": "Repayment-status code, month 5",
+        "observed_value": -2.0,
+        "shap_log_odds": -0.026112053224832572,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "EDUCATION",
+        "description": "Education code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.0049426446827331005,
+        "direction": "raises model risk score"
+      }
+    ]
+  },
+  {
+    "source_row_id": 16233,
+    "source_excel_row": 16236,
+    "observed_default_next_month": 0,
+    "uncalibrated_probability": 0.11080889879998737,
+    "calibrated_probability": 0.04694648257546696,
+    "base_log_odds": -0.4263985895659894,
+    "reconstructed_log_odds": -2.082505089225171,
+    "contributions": [
+      {
+        "feature": "PAY_0",
+        "description": "Most recent repayment-status code",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.4042829651127174,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT1",
+        "description": "Payment amount, month 1 (NT dollars)",
+        "observed_value": 5600.0,
+        "shap_log_odds": -0.18402596441981126,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT5",
+        "description": "Bill amount, month 5 (NT dollars)",
+        "observed_value": 125427.0,
+        "shap_log_odds": -0.17394800570564745,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT2",
+        "description": "Payment amount, month 2 (NT dollars)",
+        "observed_value": 6000.0,
+        "shap_log_odds": -0.15133066975491583,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT5",
+        "description": "Payment amount, month 5 (NT dollars)",
+        "observed_value": 17000.0,
+        "shap_log_odds": -0.11476434823637822,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT6",
+        "description": "Bill amount, month 6 (NT dollars)",
+        "observed_value": 140460.0,
+        "shap_log_odds": -0.10527224137356636,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "LIMIT_BAL",
+        "description": "Credit limit (NT dollars)",
+        "observed_value": 200000.0,
+        "shap_log_odds": -0.09225694422433292,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "SEX",
+        "description": "Recorded sex code",
+        "observed_value": 2.0,
+        "shap_log_odds": -0.06518176193207692,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_2",
+        "description": "Repayment-status code, month 2",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.056397336401898354,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT6",
+        "description": "Payment amount, month 6 (NT dollars)",
+        "observed_value": 5300.0,
+        "shap_log_odds": -0.05126251375127663,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_AMT4",
+        "description": "Payment amount, month 4 (NT dollars)",
+        "observed_value": 5500.0,
+        "shap_log_odds": -0.05073237726117973,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT1",
+        "description": "Bill amount, month 1 (NT dollars)",
+        "observed_value": 129554.0,
+        "shap_log_odds": -0.048883083284528374,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "MARRIAGE",
+        "description": "Marital-status code",
+        "observed_value": 2.0,
+        "shap_log_odds": -0.048839395791229444,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT3",
+        "description": "Bill amount, month 3 (NT dollars)",
+        "observed_value": 119279.0,
+        "shap_log_odds": 0.047269279498369676,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "BILL_AMT2",
+        "description": "Bill amount, month 2 (NT dollars)",
+        "observed_value": 116490.0,
+        "shap_log_odds": -0.04534374866000584,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_3",
+        "description": "Repayment-status code, month 3",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.029518337191773214,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_5",
+        "description": "Repayment-status code, month 5",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.02673057047008989,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "BILL_AMT4",
+        "description": "Bill amount, month 4 (NT dollars)",
+        "observed_value": 121782.0,
+        "shap_log_odds": -0.02654193685288873,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_6",
+        "description": "Repayment-status code, month 6",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.02167518226174215,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "PAY_4",
+        "description": "Repayment-status code, month 4",
+        "observed_value": 0.0,
+        "shap_log_odds": -0.01999705199454953,
+        "direction": "lowers model risk score"
+      },
+      {
+        "feature": "AGE",
+        "description": "Age",
+        "observed_value": 34.0,
+        "shap_log_odds": 0.010990627673694993,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "EDUCATION",
+        "description": "Education code",
+        "observed_value": 1.0,
+        "shap_log_odds": 0.004168196919070138,
+        "direction": "raises model risk score"
+      },
+      {
+        "feature": "PAY_AMT3",
+        "description": "Payment amount, month 3 (NT dollars)",
+        "observed_value": 4300.0,
+        "shap_log_odds": -0.0015501690697084483,
+        "direction": "lowers model risk score"
+      }
+    ]
+  }
+]

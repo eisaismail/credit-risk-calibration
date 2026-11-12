@@ -1,0 +1,16 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  real-data:
+    runs-on: ubuntu-latest
+    env:
+      CREDIT_RISK_REAL_DATA: '1'
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e ".[dev,explain]"
+      - run: pytest -q

@@ -1,0 +1,19 @@
+{
+  "method": "Tree SHAP",
+  "feature_perturbation": "tree_path_dependent",
+  "target": "uncalibrated gradient-boosting log-odds of default",
+  "explained_rows": 6000,
+  "local_examples": 5,
+  "selection": "Five held-out rows sampled without replacement; seed 42",
+  "max_log_odds_reconstruction_error": 1.1546319456101628e-14,
+  "max_probability_reconstruction_error": 2.1094237467877974e-15,
+  "shap_version": "0.54.1",
+  "notes": [
+    "All explained inputs are actual held-out UCI records.",
+    "Training tree-path counts supply the reference distribution; no invented borrowers.",
+    "SHAP values are model attributions, not causes or lending recommendations.",
+    "Correlated payment and bill features can share attribution in assumption-dependent ways.",
+    "Values do not add up to the calibrated probability.",
+    "source_row_id is the zero-based data-row index, not the original client ID."
+  ]
+}

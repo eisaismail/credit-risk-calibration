@@ -50,7 +50,7 @@ def make_preprocessor(X: pd.DataFrame) -> ColumnTransformer:
     ])
     categorical_pipe = Pipeline([
         ("imputer", SimpleImputer(strategy="most_frequent")),
-        ("onehot", OneHotEncoder(handle_unknown="ignore")),
+        ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False)),
     ])
     return ColumnTransformer([
         ("numeric", numeric_pipe, numeric),
@@ -59,7 +59,7 @@ def make_preprocessor(X: pd.DataFrame) -> ColumnTransformer:
 
 
 def make_models(X: pd.DataFrame, random_state: int = 42) -> dict[str, Pipeline]:
-    """Use interpretable logistic regression and a nonlinear random forest comparator."""
+    """Compare linear, bagged-tree and boosted-tree models with fixed settings."""
     return {
         "Logistic regression": Pipeline([
             ("preprocess", make_preprocessor(X)),
@@ -72,6 +72,15 @@ def make_models(X: pd.DataFrame, random_state: int = 42) -> dict[str, Pipeline]:
             ("model", RandomForestClassifier(
                 n_estimators=400, min_samples_leaf=10, max_features="sqrt",
                 class_weight="balanced_subsample", n_jobs=-1,
+                random_state=random_state,
+            )),
+        ]),
+        "Gradient boosting": Pipeline([
+            ("preprocess", make_preprocessor(X)),
+            ("model", HistGradientBoostingClassifier(
+                max_iter=200, learning_rate=0.08, max_leaf_nodes=15,
+                min_samples_leaf=30, l2_regularization=1.0,
+                class_weight="balanced", early_stopping=False,
                 random_state=random_state,
             )),
         ]),
@@ -136,9 +145,9 @@ def evaluate_probabilities(y_true, probabilities, threshold: float = 0.5) -> dic
         "Brier_score": float(brier_score_loss(y, p)),
         "Log_loss": float(log_loss(y, p, labels=[0, 1])),
         "ECE_10_bins": expected_calibration_error(y, p, n_bins=10),
-        "Precision_at_0.5": float(precision_score(y, pred, zero_division=0)),
-        "Recall_at_0.5": float(recall_score(y, pred, zero_division=0)),
-        "F1_at_0.5": float(f1_score(y, pred, zero_division=0)),
+        "Precision_at_threshold": float(precision_score(y, pred, zero_division=0)),
+        "Recall_at_threshold": float(recall_score(y, pred, zero_division=0)),
+        "F1_at_threshold": float(f1_score(y, pred, zero_division=0)),
     }
 
 
