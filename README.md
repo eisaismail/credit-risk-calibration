@@ -1,126 +1,136 @@
-# Credit Default Prediction, Calibration and Explanations
+# Credit Default Prediction and Calibration
 
-Compare three machine-learning models on real credit-card records, check their probability estimates, and explain the boosted model's predictions.
+This project predicts whether a credit card client will default the following month. It compares three models and checks how accurate their predicted probabilities are. It also explains which recorded features influenced the gradient boosting model.
 
-All reported training, comparisons and explanations use **30,000 actual historical clients from UCI**. No generated borrowers are used for the reported results. This is real historical data, not a live lending feed. No API key or paid AI service is required.
+The results come from 30,000 real historical customer records. No customer records were generated for the experiment. Everything runs locally without a paid AI service or an API key.
 
-## Data and experiment
+## The data
 
-[UCI Default of Credit Card Clients](https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients) contains 30,000 clients from Taiwan, 23 features and an observed next-month default rate of 22.12%. Repayment histories cover April–September 2005. Features include credit limit, bill amounts, payment history and demographic codes.
+The dataset is [Default of Credit Card Clients from UCI](https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients). It contains records from Taiwan, including credit limits, bill amounts, payments and demographic information. Payment histories cover April to September 2005. There are 23 input features, and 22.12% of clients defaulted the following month.
 
-The experiment compares logistic regression, random forest and histogram gradient boosting. Each run uses a stratified split:
+These are real records, but they are old. They are not a live feed and do not show how the models would perform on borrowers today.
 
-| Partition | Actual records | Purpose |
-|---|---:|---|
-| Training | 18,000 | Fit preprocessing and base models |
-| Calibration | 6,000 | Fit sigmoid probability calibration only |
-| Test | 6,000 | Evaluate predictions and explain held-out records |
+The workbook downloads on the first run and is then kept locally. Each run records its file checksum, package versions and model settings so the experiment can be reproduced. The raw workbook and trained model files are not uploaded to this repository.
 
-All three models share the same split within a run. Three preselected seeds (42, 43, 44) measure sensitivity to the random split. Hyperparameters are fixed, not selected using test scores. The test set never fits preprocessing, base models or calibration.
+## How the comparison works
 
-The original workbook is downloaded from UCI and cached locally. Its SHA-256 checksum, software versions and model parameters are recorded in each run's metadata. Raw data and trained models are excluded from Git.
+The three models are logistic regression, random forest and histogram gradient boosting.
 
-## Results across three splits
+Each run uses 18,000 records for training, 6,000 for calibration and 6,000 for testing. The split keeps roughly the same default rate in each group. All models use the same groups within a run.
 
-These are the calibrated models. Full results contain both raw and calibrated predictions for every seed.
+Training fits the models. Calibration adjusts their probability estimates using a separate group of clients. Testing checks the predictions on records that were not used for either step.
 
-| Model | Mean ROC-AUC | Mean Brier score | Mean log loss | Mean calibration error |
-|---|---:|---:|---:|---:|
-| Logistic regression | 0.7230 | 0.1465 | 0.4691 | 0.0521 |
-| Random forest | 0.7797 | 0.1358 | 0.4316 | 0.0158 |
-| Gradient boosting | 0.7782 | 0.1351 | 0.4314 | 0.0123 |
+The experiment repeats with random seeds 42, 43 and 44. Model settings were fixed before the comparison. Test scores were not used to choose settings or thresholds.
 
-Higher ROC-AUC is better; lower Brier score, log loss and calibration error are better.
+## What the results showed
 
-**Boosting did not clearly beat random forest.** The forest ranked clients slightly better on average; boosting had slightly lower probability errors after calibration. Differences are small and are not established as statistically significant. In seed 42, boosting achieved ROC-AUC 0.7851 versus 0.7845 for the forest; in seed 43 the forest ranked better.
+After calibration, the average results across the three splits were:
 
-The raw weighted models overestimated default probabilities. Boosting's mean Brier score fell from 0.1745 to 0.1351 after calibration. The default 0.5 classification threshold is a reporting convention, not an optimised lending decision.
+1. Logistic regression: ROC AUC 0.7230, Brier score 0.1465, log loss 0.4691 and calibration error 0.0521.
+2. Random forest: ROC AUC 0.7797, Brier score 0.1358, log loss 0.4316 and calibration error 0.0158.
+3. Gradient boosting: ROC AUC 0.7782, Brier score 0.1351, log loss 0.4314 and calibration error 0.0123.
 
-[Full comparison and per-seed results](results/comparison/README.md)
+ROC AUC measures how well a model ranks clients by risk. Higher is better. Brier score, log loss and calibration error measure errors in the probability estimates. Lower is better.
 
-![Ranking and calibration for seed 42](results/comparison/seed-42/evaluation.png)
+There was no clear winner between the two tree models. Random forest ranked clients slightly better on average. Gradient boosting had slightly smaller probability errors after calibration. The differences were small, and this experiment does not establish that they are statistically significant.
 
-The older two-model seed-42 results remain directly under `results/`. The extension is under `results/comparison/`.
+Calibration helped all three models. For gradient boosting, the average Brier score improved from 0.1745 to 0.1351. The default classification threshold of 0.5 is only used for reporting. It has not been chosen as the best threshold for a lending decision.
 
-## Explain actual held-out predictions
+[Full comparison and results for each split](results/comparison/README.md)
 
-Tree SHAP explains the boosted model on **all 6,000 actual test records for seed 42**. Five real held-out rows are also selected with a fixed random seed for individual explanations, without choosing only correct predictions.
+![Model comparison for seed 42](results/comparison/seed-42/evaluation.png)
 
-Each example includes its actual feature values, observed default outcome, raw and calibrated probabilities, and the contribution of every feature. The base score plus all 23 contributions reconstructs the model's uncalibrated score. The maximum observed log-odds reconstruction error was approximately `1.2e-14`.
+The original results for two models and seed 42 remain directly inside `results/`. The newer comparison is in `results/comparison/`.
 
-Positive contributions raise the model's score; negative contributions lower it. They are measured in **log-odds, not percentage points**. They explain the uncalibrated model, not its calibration layer, and do not show why a person actually defaulted.
+## Explaining the predictions
 
-![Global attribution on real held-out records](results/comparison/seed-42/explanations/global_importance.png)
+SHAP is used to explain the gradient boosting model on all 6,000 test records from seed 42. It assigns a contribution to each feature, showing whether that feature pushed the model score up or down.
 
-The largest average attribution in this run was the most recent repayment-status code (`PAY_0`), followed by credit limit (`LIMIT_BAL`). Correlated bill and payment features can share attribution in assumption-dependent ways.
+The largest average contribution came from the most recent repayment status, `PAY_0`, followed by credit limit, `LIMIT_BAL`.
 
-[Five actual held-out examples](results/comparison/seed-42/explanations/README.md)
+![Features influencing the boosted model](results/comparison/seed-42/explanations/global_importance.png)
 
-Tree SHAP uses the training observations' tree-path counts as its reference distribution. No artificial background borrowers are generated. `source_row_id` is the zero-based workbook data-row index, not the original client ID; the corresponding Excel row number is also exported.
+Five actual test records were also selected using a fixed random seed. Their exports show the recorded values, the observed default outcome, the predicted probabilities and every feature contribution. They were not selected because the predictions were correct.
 
-## Run it
+[Individual prediction explanations](results/comparison/seed-42/explanations/README.md)
 
-Python 3.10 or newer. First-time data download requires internet; later runs use the cached workbook.
+The contributions explain the raw model score in log odds. They are not percentage point changes and do not explain the separate calibration step. The base score plus all 23 contributions was checked against the original prediction for every explained record. The largest reconstruction error was about `1.2e-14`.
+
+Tree SHAP uses counts from the training records that passed through the trees as its reference. It does not generate example borrowers. The exported `source_row_id` is the data row's position in the workbook, not the original client ID. The corresponding Excel row number is included too.
+
+These explanations describe what influenced the model. They do not prove why someone defaulted. Related payment and bill features can share contributions, depending on the explanation method's assumptions.
+
+## Running the project
+
+Python 3.10 or newer is required. Run these commands from the project folder in PowerShell:
 
 ```powershell
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -e ".[dev,explain]"
 
-# Full comparison and real-record explanations
 credit-risk --seeds 42 43 44 --explain --output-dir outputs/comparison --model-dir models/comparison
+```
 
-# One split without explanations
+For one split without explanations:
+
+```powershell
 credit-risk --seed 42
 ```
 
-On macOS/Linux use `python3 -m venv .venv` and `source .venv/bin/activate`.
+On macOS or Linux, create the environment with `python3 -m venv .venv` and activate it with `source .venv/bin/activate`.
 
-If downloading fails, put UCI's workbook in `data/raw/default_of_credit_card_clients.xls`. The required `xlrd` reader is now installed with the project.
+Internet access is needed for the first dataset download. Later runs can use the cached workbook. If the download fails, place UCI's workbook at `data/raw/default_of_credit_card_clients.xls`. The Excel reader, `xlrd`, is installed with the project.
 
-Full runs save per-client predictions, split memberships, all SHAP values and actual held-out inputs under `outputs/`. The repo includes the smaller comparison tables, charts, run metadata and five-row explanation export, not every generated file.
+Full runs save predictions, split memberships, SHAP values and the actual test inputs under `outputs/`. The repository contains the smaller result tables, charts, metadata and five individual explanations.
 
-## Tests
+## Testing
+
+Run the basic checks with:
 
 ```powershell
-# Mathematical unit checks, not evidence of model performance
 pytest -q
+```
 
-# Enable integration checks on the actual UCI workbook
+Enable the tests that use the real UCI workbook with:
+
+```powershell
 $env:CREDIT_RISK_REAL_DATA = "1"
 pytest -q
 ```
 
-The original four unit tests use small constructed arrays to check metrics and split functions. They do not supply the reported performance results. The two new integration tests read the real 30,000-row workbook, check split separation, fit and calibrate the boosted model, and verify SHAP reconstruction on real held-out records. GitHub Actions enables these real-data tests. The full experiment additionally checks reconstruction on all 6,000 explained rows.
+The four original unit tests use small constructed arrays to check calculations and splitting functions. Those arrays are not used to produce the model results.
 
-## Files
+The two additional integration tests use the real workbook. They check that records do not overlap between groups, train and calibrate the boosted model, and check explanation reconstruction on actual test records. GitHub Actions runs these tests with real data enabled. The full experiment also checks the explanations across all 6,000 test records.
 
-```text
-src/credit_risk/
-    data.py           download and validate the UCI workbook
-    modeling.py       three models, splits, calibration and metrics
-    explanations.py   Tree SHAP on real held-out inputs
-    cli.py            single runs and repeated comparisons
-tests/
-    test_modeling.py   original mathematical checks
-    test_real_data.py  actual-workbook integration checks
-results/comparison/   recorded comparison and explanation results
-```
+## Code and results
+
+`data.py` downloads and checks the workbook. `modeling.py` contains the models, splits, calibration and evaluation functions. `explanations.py` creates the SHAP outputs. `cli.py` runs either one experiment or the repeated comparison.
+
+Tests are in `tests/`. The published comparison is in `results/comparison/`.
 
 ## Limitations
 
-- These are historical Taiwanese records, not current Irish/European borrowers. Real data does not establish current lending performance.
-- Random splits are not temporal validation. Test sets overlap across seeds; the reported ranges are not confidence intervals or independent replications.
-- No extensive hyperparameter search, external validation or statistically established model winner is claimed.
-- Age and demographic codes are included. No fairness audit or real credit-decision validation has been performed. Integer-coded categories retain the original project's numeric treatment.
-- SHAP depends on the fitted model and assumptions about feature dependence. It does not identify causes, explain calibrated probabilities, or recommend how to make someone creditworthy.
-- Test-set explanations describe already evaluated predictions. They are not used to choose settings or thresholds. Future model revisions need a fresh evaluation plan to avoid repeated test-set tuning.
-- This is a learning and evaluation project, not a lending tool.
+The dataset is historical and comes from Taiwan. It has not been validated against current Irish or European lending data.
 
-## Data credit and references
+Random splits do not test performance on future customers. Records can appear in the test sets of more than one seed, so the reported ranges are not confidence intervals or independent repetitions.
 
-Yeh, I. (2009). *Default of Credit Card Clients* [Dataset]. UCI Machine Learning Repository. [DOI: 10.24432/C55S3H](https://doi.org/10.24432/C55S3H). Dataset licensed under CC BY 4.0. Recorded outputs derive from that dataset.
+The project does not include an extensive search for model settings, validation on another dataset or a statistically established model winner.
 
-[Histogram gradient boosting](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html) · [Tree SHAP](https://shap.readthedocs.io/en/latest/generated/shap.TreeExplainer.html)
+Age and demographic codes are included. No fairness audit or validation for real credit decisions has been carried out. Categories stored as integers are still treated numerically, as in the original project.
 
-Development note from the original project: AI tools were used to help write and debug code. Reported results come from actual runs on the cited data.
+SHAP explanations depend on the model and assumptions about relationships between features. They do not establish causes or tell someone how to become creditworthy.
+
+The explanations were not used to tune the models. Further changes need a fresh evaluation plan to avoid repeatedly adjusting models to the same test results.
+
+This is a learning project, not a tool for making lending decisions.
+
+## Data credit
+
+Yeh, I. (2009). *Default of Credit Card Clients* [Dataset]. UCI Machine Learning Repository. [DOI: 10.24432/C55S3H](https://doi.org/10.24432/C55S3H).
+
+The dataset is licensed under CC BY 4.0. The recorded results are derived from it.
+
+[Gradient boosting documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)
+
+[SHAP documentation](https://shap.readthedocs.io/en/latest/generated/shap.TreeExplainer.html)
